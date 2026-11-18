@@ -29,13 +29,13 @@ Isso cria um acoplamento forte com um serviço externo que o sistema não contro
 ## Problema 2 — o ciclo de vida de Emprestimo
 
 **Em que consiste o problema, e o que acontece quando o sistema cresce:**
-
+O ciclo de vida de "Emprestimo" é controlado usando textos soltos ("RESERVADO", "EMPRESTADO", "ENCERRADO") e vários "if/else" espalhados pelos métodos "emprestar()", "restituir()" e "anular()". Com as regras de transição distribuídas desse jeito, fica difícil enxergar o fluxo completo em um só lugar e além disso, usar "String" para representar estados abre margem para erros de digitação que só são descobertos quando o sistema já está rodando e conforme o sistema cresce e surgem novos estados (como "ATRASADO", "RENOVADO" ou "EXTRAVIADO") ou novas operações (como "renovar()" e "cobrarMulta()"), será preciso alterar todos esses métodos para encaixar novos "if/else", deixando o código cada vez mais complexo e fácil de quebrar o que já funcionava.
 
 **Princípio SOLID violado:**
-
+Viola o Princípio Aberto/Fechado (OCP), porque a classe "Emprestimo" precisa ter seus métodos modificados toda vez que um novo estado ou regra de transição é adicionado, em vez de permitir que o comportamento seja estendido sem mexer no código existente e também viola o Princípio da Responsabilidade Única (SRP), já que "Emprestimo" guarda seus próprios dados e, ao mesmo tempo, concentra todas as regras e validações de cada estado.
 
 **Classes afetadas (pelo nome):**
-
+"Emprestimo".
 
 ---
 
