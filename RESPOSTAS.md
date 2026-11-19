@@ -56,9 +56,11 @@ No caso alterar diretamente a classe "AcervoLegadoWS" por três motivos: o prime
 ## Padrão aplicado ao Problema 2
 
 **O problema que ele resolve (descreva antes de nomear o padrão):**
-
+Ele resolve o excesso de "if/else" espalhados que controlam o comportamento de um objeto dependendo do estado em que ele se encontra e ele separa cada estado e suas regras de transição em classes próprias, fazendo com que a classe principal apenas delegue as ações para o estado atual.
 
 **Nome do padrão:**
+"State"(estado).
 
 
 **Alternativa descartada e por que ela não resolveria por completo:**
+Seria Trocar a "Strin"g" por um "enum" simples (como "enum Situacao { RESERVADO, EMPRESTADO, ENCERRADO" }). Embora o "enum" evite erros de digitação, ele não elimina os "if/else" ou "switch" espalhados pelos métodos "emprestar()", "restituir()" e "anular()". As regras continuariam espalhadas dentro de "Emprestimo" e, sempre que um novo estado fosse criado, ainda seria preciso alterar todos esses métodos, mantendo a violação do Princípio Aberto/Fechado (OCP). Além disso, essa abordagem não cumpriria o requisito de deixar os métodos de transição com apenas uma linha e sem "if", nem deixaria o ciclo de vida organizado em classes separadas por fase.
