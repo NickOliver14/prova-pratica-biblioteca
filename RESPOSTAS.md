@@ -44,12 +44,13 @@ Viola o Princípio Aberto/Fechado (OCP), porque a classe "Emprestimo" precisa te
 ## Padrão aplicado ao Problema 1
 
 **O problema que ele resolve (descreva antes de nomear o padrão):**
-
+Ele resolve a incompatibilidade entre o que o sistema precisa (uma lista de objetos "Exemplar") e o que o serviço legado entrega (uma matriz "String[][]") e por isso ele faz a ponte entre os dois lados, traduzindo a interface e os dados crus do legado para uma interface padronizada que o restante do sistema espera e assim, a lógica de conversão fica centralizada em um único lugar e as classes consumidoras deixam de depender diretamente do serviço legado.
 
 **Nome do padrão:**
-
+"Adapter".
 
 **Alternativa descartada e por que ela não resolveria por completo:**
+No caso alterar diretamente a classe "AcervoLegadoWS" por três motivos: o primeiro, porque trata-se de um serviço legado de outra equipe cujo código não podemos modificar; o segundo pois mudar o formato de retorno quebraria outros sistemas antigos que também dependem dessa matriz "String[][]"; e terceiro, porque mesmo que fosse possível alterar o legado para retornar "Exemplar", as classes de negócio continuariam acopladas diretamente a uma classe concreta externa em vez de dependerem de uma interface, mantendo a violação do Princípio da Inversão de Dependência (DIP).
 
 
 ## Padrão aplicado ao Problema 2
