@@ -1,10 +1,10 @@
 package siga;
 
 /**
- * Demonstra os dois problemas e, ao final, roda a VerificacaoRapida.
+ * Demonstra a solucao dos problemas e, ao final, roda a VerificacaoRapida.
  *
- * Voce VAI precisar alterar a montagem abaixo quando resolver o Problema 1
- * - e so isso. O resto do arquivo pode ficar como esta.
+ * A montagem instancia o AcervoAdapter para desacoplar CatalogoExemplares
+ * e RelatorioColecao do servico legado AcervoLegadoWS.
  */
 public class Main {
 
@@ -13,8 +13,9 @@ public class Main {
         System.out.println();
 
         AcervoLegadoWS legado = new AcervoLegadoWS();
-        CatalogoExemplares catalogo = new CatalogoExemplares(legado);
-        RelatorioColecao relatorio = new RelatorioColecao(legado);
+        Acervo acervo = new AcervoAdapter(legado);
+        CatalogoExemplares catalogo = new CatalogoExemplares(acervo);
+        RelatorioColecao relatorio = new RelatorioColecao(acervo);
 
         System.out.println("1) O mesmo dado, convertido em dois lugares");
         System.out.println("   Disponiveis segundo o catalogo:");
