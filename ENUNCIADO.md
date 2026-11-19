@@ -4,7 +4,7 @@
 
 CST em Desenvolvimento de Software Multiplataforma — Fatec de Porto Ferreira
 
-Nome: ______________________________________________  RA: ______________
+Nome: Nicolas Alves de Oliveira  RA: 311139252300
 
 ## 1. Regras
 
